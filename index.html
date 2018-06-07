@@ -13,6 +13,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body>
+    <div class='container'>
     <!-- Navbar goes here -->
     <nav>
       <div class="nav-wrapper">
@@ -32,11 +33,11 @@
         <!-- Grey navigation panel -->
         <button id='fetchButton' class="btn waves-effect waves-light">Get Question</button>
         <p>
-        <button id='submitButton' class="btn waves-effect waves-light">General Submit Button</button>
+        <button id='submitButton' class="btn waves-effect waves-light">Submit All</button>
         <p>
-        <!-- <div class="pointsCounter"># of Points: </div> -->
+        <div class="pointsCounter"># of Points: ${correctPoints} </div>
         <p>
-        <span class="new badge" data-badge-caption="custom caption"># of points</span>
+        <span class="new badge" data-badge-caption="custom caption">${correctPoints} # of points</span>
       </div>
 
       <div class="col s9">
@@ -54,5 +55,6 @@
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script src="app.js" charset="utf-8"></script>
+  </div>
   </body>
 </html>

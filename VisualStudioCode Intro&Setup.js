@@ -21,7 +21,7 @@ const state = document.getElementById('state').value
 
 // Change Location
 weather.changeLocation(city, state);
-//Set Location in LS
+// Set Location in LS
 storage.setLocationData(city, state);
 
 // Get and display weather
@@ -38,4 +38,5 @@ function getWeather() {
     })
     .catch(err => console.log(err));
 }
+
 
