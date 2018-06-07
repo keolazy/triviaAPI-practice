@@ -86,7 +86,8 @@ document.addEventListener('DOMContentLoaded', ev => {
 					buttonIdCount++
 					inputIdCount++
 				}
-				return resultsArray // is this necessaryto make everythig within promise global
+				// is this necessary to make everything within promise global?
+				return resultsArray
 			})
 			.catch(error => {
 				console.error(error)
