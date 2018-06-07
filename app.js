@@ -41,7 +41,10 @@ document.addEventListener('DOMContentLoaded', ev => {
 			console.log('Congratulations, that\'s the correct Answer!')
 			correctPoints++
 			numberCorrect.innerHTML = correctPoints
-		} else if (userAnswer == null) {
+		} else if (
+			userAnswer !== answersArray[identifier] &&
+			userAnswer.split('').length > 0
+		) {
 			console.log('Sorry, your answer was wrong, case-sensitive bruh')
 			wrongPoints++
 			numberWrong.innerHTML = wrongPoints
