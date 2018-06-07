@@ -4,12 +4,14 @@ document.addEventListener('DOMContentLoaded', ev => {
 	let answersArray = [] // push all answers into this array.
 	let userAnswers = [] // loop through this array of users answers and compare to answersArray. Use forEach() comparison function
 	let correctPoints = 0
+	let wrongPoints = 0
 
 	const appContainer = document.getElementsByClassName('container')[0]
 	const numberCorrect = document.getElementsByClassName('pointsCounter')[0]
+	const numberWrong = document.getElementsByClassName('wrongCounter')[0]
 	const collectionList = document.getElementsByClassName('collection')[0]
 	const fetchButton = document.getElementById('fetchButton')
-	const submitButton = document.getElementById('submitButton')
+	// const submitButton = document.getElementById('submitButton')
 
 	// Fetch Trivia API Button
 	fetchButton.addEventListener('click', ev => {
@@ -17,30 +19,33 @@ document.addEventListener('DOMContentLoaded', ev => {
 		fetchQuestions()
 	})
 
-	// Adds EventListener to all buttons and inputs from the "EV" object.
 	// appContainer.addEventListener('click', ev => {
 	ev.target.addEventListener('click', ev => {
+		console.log(ev)
 		let buttonIdentifier = ev.target.getAttribute('id') // "common identifier variable" returns ex) button0, button1, button2
 		// extracting commonID value from this button to pass into function that deals with which input I'm looking at.
 		let commonIDArray = buttonIdentifier.split('') // ['b', 'u', 't', 't', 'o', 'n', 1]
 		let commonID = commonIDArray[commonIDArray.length - 1] // returns last element in array aka our desired ID
-		console.log(commonID)
+		// console.log(commonID)
 		console.log(`button${commonID} works`)
 		submitUserResponse(commonID)
 	})
-	// })
+	// }) WOW HUGE TAKEAWAY: Don't need to have some encompassing container.addEventListener. JS knows what ev object is.
 
 	// Does the comparison logic. What do I need to pass into it?
 	function submitUserResponse(commonId) {
 		let identifier = commonId
-		let answerField = document.getElementById(`input${identifier}`) // for test purposes, only testing first question.
-		let userAnswer = answerField.value // works
-		console.log(userAnswer)
+		let answerField = document.getElementById(`input${identifier}`)
+		let userAnswer = answerField.value
 		if (userAnswer == answersArray[identifier]) {
 			console.log('Congratulations, that\'s the correct Answer!')
 			correctPoints++
+			numberCorrect.innerHTML = correctPoints
+		} else if (userAnswer == null) {
+			console.log('Sorry, your answer was wrong, case-sensitive bruh')
+			wrongPoints++
+			numberWrong.innerHTML = wrongPoints
 		}
-		numberCorrect.innerHTML = correctPoints
 	}
 
 	// Fetch API + Converting JSON response into something useful and DOM Manipulation bulk
@@ -68,7 +73,7 @@ document.addEventListener('DOMContentLoaded', ev => {
 
 					// Store result.correct_answer in a globally accessible variable. How do i pass this out of promise?
 					answersArray.push(result.correct_answer)
-					console.log(answersArray)
+					// console.log(answersArray)
 
 					// Where the DOM magic happens
 					let qaHtmlElement = document.createElement('li')
@@ -78,14 +83,10 @@ document.addEventListener('DOMContentLoaded', ev => {
 					buttonIdCount++
 					inputIdCount++
 				}
-				return resultsArray
+				return resultsArray // is this necessaryto make everythig within promise global
 			})
 			.catch(error => {
 				console.error(error)
 			})
 	}
 })
-
-// Just need to figure out how to make the correctAnswers from result be id_specific.
-// Idea#1) push each result.correct_answer to an answersArray.
-// Write function to check if(answersArray[i] === userAnswer)

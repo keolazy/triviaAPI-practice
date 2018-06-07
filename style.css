@@ -7,3 +7,31 @@ h3 {
 	background-color: grey;
 	display: flex;
 } */
+
+.sidebar {
+	display: flex;
+	justify-content: center;
+}
+.pointsCounter {
+	font-size: 80px;
+	border-style: solid;
+	width: 85px;
+	display: flex;
+	justify-content: center;
+}
+
+.wrongCounter {
+	font-size: 80px;
+	border-style: solid;
+	width: 85px;
+	display: flex;
+	justify-content: center;
+}
+
+.pointsSpan {
+	display: flex;
+}
+
+.wrongSpan {
+	display: flex;
+}

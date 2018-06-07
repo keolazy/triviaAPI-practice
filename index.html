@@ -27,17 +27,17 @@
     </nav>
 
     <!-- Page Layout here -->
-    <div class="row">
+    <div class="row sidebar">
 
       <div class="col s3">
         <!-- Grey navigation panel -->
         <button id='fetchButton' class="btn waves-effect waves-light">Get Question</button>
         <p>
-        <button id='submitButton' class="btn waves-effect waves-light">Submit All</button>
+        <!-- <button id='submitButton' class="btn waves-effect waves-light">Submit All</button> -->
         <p>
-        <div class="pointsCounter"># of Points: ${correctPoints} </div>
+        <div class="new badge pointsCounter" data-badge-caption="#ofPoints"></div><span class="pointsSpan"># of Points</span>
         <p>
-        <span class="new badge" data-badge-caption="custom caption">${correctPoints} # of points</span>
+        <div class="new badge wrongCounter"></div><span class="wrongSpan"># of Wrong Guesses</span>
       </div>
 
       <div class="col s9">
